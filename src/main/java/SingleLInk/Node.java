@@ -1,7 +1,7 @@
 package SingleLInk;
 
 public class Node<T> {
-    private Node next;
+    private Node<T> next;
     private T value;
 
     Node(T value, Node<T> next) {
@@ -13,7 +13,7 @@ public class Node<T> {
         return next;
     }
 
-    public Node<T> setNext(Node next) {
+    public Node<T> setNext(Node<T> next) {
         this.next = next;
         return this;
     }
