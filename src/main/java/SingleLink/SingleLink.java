@@ -1,4 +1,4 @@
-package SingleLInk;
+package SingleLink;
 
 public class SingleLink<T> {
     private int count = 0;
@@ -18,7 +18,7 @@ public class SingleLink<T> {
     }
 
     public Node<T> insertHead(T value) {
-        Node<T> tNode = new Node<>(value, head);
+        Node<T> tNode = new Node<T>(value, head);
         head = tNode;
         count++;
         if (tail == null) tail = tNode;
@@ -38,7 +38,7 @@ public class SingleLink<T> {
         if (index == 0) return insertHead(value);
         if (index == count - 1) return insertTail(value);
         Node<T> preNode = getNode(index);
-        Node<T> tNode = new Node<>(value, preNode.getNext());
+        Node<T> tNode = new Node<T>(value, preNode.getNext());
         preNode.setNext(tNode);
         count++;
         return tNode;

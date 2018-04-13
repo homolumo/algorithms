@@ -1,4 +1,4 @@
-package SingleLInk;
+package SingleLink;
 
 public class Node<T> {
     private Node<T> next;

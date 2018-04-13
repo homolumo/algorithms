@@ -1,4 +1,4 @@
-package SingleLInk;
+package SingleLink;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SingleLinkTest {
-    private SingleLink<Integer> singleLink = new SingleLink<>();
+    private SingleLink<Integer> singleLink = new SingleLink<Integer>();
 
     @Before
     public void onBefore() {
