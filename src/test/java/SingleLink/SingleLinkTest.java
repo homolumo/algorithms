@@ -45,4 +45,10 @@ public class SingleLinkTest {
         assertEquals(0, singleLink.getCount());
     }
 
+    @Test
+    public void foreach() {
+        for (Integer val : singleLink) {
+            System.out.println(val);
+        }
+    }
 }

@@ -1,6 +1,9 @@
 package SingleLink;
 
-public class SingleLink<T> {
+import java.util.Iterator;
+
+public class SingleLink<T> implements Iterable<T> {
+
     private int count = 0;
     private Node<T> head = null;
     private Node<T> tail = null;
@@ -99,5 +102,26 @@ public class SingleLink<T> {
             tNode = tNode.getNext();
         }
         return sb.toString().trim();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+
+            private Node<T> current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null && current.getNext() != null;
+            }
+
+            @Override
+            public T next() {
+                if (current == null) return null;
+                current = current.getNext();
+                if (current == null) return null;
+                return current.getValue();
+            }
+        };
     }
 }
