@@ -2,13 +2,13 @@ package SingleLink;
 
 import java.util.Iterator;
 
-public class SingleLink<T> implements Iterable<T> {
+public class SingleLink<T> implements Iterable<T>{
 
-    private int count = 0;
+    private long count = 0;
     private Node<T> head = null;
     private Node<T> tail = null;
 
-    public int getCount() {
+    public long getCount() {
         return count;
     }
 
@@ -20,34 +20,34 @@ public class SingleLink<T> implements Iterable<T> {
         return tail;
     }
 
-    public Node<T> insertHead(T value) {
+    public long unshift(T value) {
         Node<T> tNode = new Node<T>(value, head);
         head = tNode;
         count++;
         if (tail == null) tail = tNode;
-        return tNode;
+        return count;
     }
 
-    public Node<T> insertTail(T value) {
+    public long push(T value) {
         Node<T> tNode = new Node<>(value, null);
         tail.setNext(tNode);
         tail = tNode;
         count++;
         if (head == null) head = tNode;
-        return tNode;
+        return count;
     }
 
-    public Node<T> insert(int index, T value) throws Exception {
-        if (index == 0) return insertHead(value);
-        if (index == count - 1) return insertTail(value);
+    public long insert(int index, T value) throws Exception {
+        if (index == 0) return unshift(value);
+        if (index == count - 1) return push(value);
         Node<T> preNode = getNode(index);
         Node<T> tNode = new Node<T>(value, preNode.getNext());
         preNode.setNext(tNode);
         count++;
-        return tNode;
+        return count;
     }
 
-    public T removeHead() {
+    public T shift() {
         if (head == null) return null;
         T value = head.getValue();
         head = head.getNext();
@@ -56,7 +56,7 @@ public class SingleLink<T> implements Iterable<T> {
         return value;
     }
 
-    public T removeTail() {
+    public T pop() {
         if (tail == null) return null;
         T value = tail.getValue();
         // 只有一个元素
@@ -83,7 +83,7 @@ public class SingleLink<T> implements Iterable<T> {
         return tNode.getValue();
     }
 
-    public Node<T> getNode(int index) throws Exception {
+    private Node<T> getNode(int index) throws Exception {
         Node<T> tNode = head;
         while (index > 0) {
             if (tNode == null) throw new Exception("index out of bound");

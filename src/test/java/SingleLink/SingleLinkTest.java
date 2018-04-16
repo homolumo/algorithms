@@ -10,10 +10,10 @@ public class SingleLinkTest {
 
     @Before
     public void onBefore() {
-        singleLink.insertHead(1);
-        singleLink.insertTail(2);
-        singleLink.insertHead(0);
-        singleLink.insertTail(3);
+        singleLink.unshift(1);
+        singleLink.push(2);
+        singleLink.unshift(0);
+        singleLink.push(3);
     }
 
     @Test
@@ -36,12 +36,12 @@ public class SingleLinkTest {
 
     @Test
     public void removeHeadAndTail() {
-        assertEquals(Integer.valueOf(0), singleLink.removeHead());
-        assertEquals(Integer.valueOf(3), singleLink.removeTail());
+        assertEquals(Integer.valueOf(0), singleLink.shift());
+        assertEquals(Integer.valueOf(3), singleLink.pop());
         assertEquals("1 2", singleLink.toString());
         assertEquals(2, singleLink.getCount());
-        assertEquals(Integer.valueOf(2), singleLink.removeTail());
-        assertEquals(Integer.valueOf(1), singleLink.removeHead());
+        assertEquals(Integer.valueOf(2), singleLink.pop());
+        assertEquals(Integer.valueOf(1), singleLink.shift());
         assertEquals(0, singleLink.getCount());
     }
 
